@@ -4,14 +4,16 @@ import java.util.Collection;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class DaoTeam implements TeamDao {
+abstract public class DaoTeam implements TeamDao {
     @Override
     public long[] addUser(Collection<FeaturesDB> team) {
         return new long[0];
     }
 
     @Override
-    public List<FeaturesDB> getUser() {
+    public FeaturesDB getCharactTeamsId(int id) {
         return null;
     }
+
+
 }

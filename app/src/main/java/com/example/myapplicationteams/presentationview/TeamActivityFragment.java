@@ -1,30 +1,33 @@
 package com.example.myapplicationteams.presentationview;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplicationnuevo.R;
-import com.example.myapplicationteams.model.data.MessageEvent;
 import com.example.myapplicationteams.model.data.di.modulo.TeamApplication;
 import com.example.myapplicationteams.model.data.rom.FeaturesDB;
 import com.example.myapplicationteams.model.data.rom.TeamRoomDataBase;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class TeamActivityFragment extends Fragment {
 
@@ -37,54 +40,47 @@ public class TeamActivityFragment extends Fragment {
 
     private List<FeaturesDB> teamdb = new ArrayList<>();
 
+    @BindView(R.id.textViewDescription)
+    TextView texDes;
+
+    @BindView(R.id.imageViewStadium)
+    ImageView imageStadium;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_feature, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         fragmentManager =  getFragmentManager();
         TeamActivityFragment teamActivityFragment = (TeamActivityFragment)fragmentManager.findFragmentByTag("TeamFragment");
         Bundle bundle = teamActivityFragment.getArguments();
         if (bundle != null) {
             umberSelected = bundle.getInt(Util.FROMADAPTERTEAM, -1);
-
-            teamdb = TeamRoomDataBase.teamDao().getUser();
-
-
-//    imageview.setImageURI(Uri.parse(imageBaseDirectory+imageName));
+//            teamdb = TeamRoomDataBase.teamDao().getCharactTeamsId();
+            FeaturesDB  teamdba = TeamRoomDataBase.teamDao().getCharactTeamsId(umberSelected);
+            texDes.setText(teamdba.getDescrip());
+            final String URL =teamdba.getPhoto();
+            Glide.with(getActivity())
+                    .load(URL)
+//                    .error(R.drawable.error);
+//                    .placeholder(R.drawable.placeholder)
+                    .into(imageStadium);
 
         }
-        return view;
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
-        // ((TeamApplication) getApplication()).getRetrofitComponent().inject(this);
-//        ((TeamActivityFragment)context.getApplicationContext()).getActivity().getRetrofitComponent().inject(this);
+        ((TeamApplication) getActivity().getApplication()).getRetrofitComponent().inject(this);
         super.onAttach(context);
     }
-
-    //    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
-//    public void onMessageEvent(MessageEvent event){
-//        try {
-//
-//            umberSelected = event.getNumberselected();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        EventBus.getDefault().register(this);
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        EventBus.getDefault().unregister(this);
-//        super.onStop();
-//    }
-
 
 }

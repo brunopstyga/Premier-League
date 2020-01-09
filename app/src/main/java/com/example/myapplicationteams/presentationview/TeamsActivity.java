@@ -10,11 +10,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.example.myapplicationnuevo.R;
 import com.example.myapplicationteams.businessviewmodel.TeamViewModel;
-import com.example.myapplicationteams.model.data.di.modulo.room.RoomRepository;
 import com.example.myapplicationteams.model.data.entity.Team;
 import com.example.myapplicationteams.model.data.di.modulo.TeamApplication;
 import com.example.myapplicationteams.model.data.di.modulo.factory.ViewModelFactory;
@@ -36,9 +34,6 @@ public class TeamsActivity extends AppCompatActivity {
     @Inject
     ViewModelFactory viewModelFactory;
 
-//    @Inject
-//    RoomRepository roomRepository;
-
     @Inject
     TeamRoomDataBase TeamRoomDataBase;
 
@@ -58,7 +53,7 @@ public class TeamsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teams);
         fragmentManager =  getSupportFragmentManager();
         setUpView();
-        addFragment();
+//        addFragment();
 //        teamRoomDataBase = Room.databaseBuilder(this,TeamRoomDataBase.class,"features.db").allowMainThreadQueries().build();
         teamViewModel = ViewModelProviders.of(this, viewModelFactory).get(TeamViewModel.class);
         teamViewModel.getTeamResponseMutableLiveData().observe(this, new Observer<List<Team>>() {
@@ -88,19 +83,5 @@ public class TeamsActivity extends AppCompatActivity {
                 ).collect(toCollection(ArrayList::new));
         return test;
     }
-
-    private void addFragment(){
-        FeatureFragment featureFragment = new FeatureFragment();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_main, featureFragment, "Frag_a");
-        transaction.commit();
-
-    }
-    public void maa(){
-//        teamdb = teamRoomDataBase.teamDao().getUser();
-        teamdb = TeamRoomDataBase.teamDao().getUser();
-
-    }
-
 
 }
