@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -38,29 +39,27 @@ public class TeamsActivity extends AppCompatActivity {
     TeamRoomDataBase TeamRoomDataBase;
 
 
-
     private RecyclerView recyclerView;
     private List<Team> teams = new ArrayList<>();
     private List<FeaturesDB> teamdb = new ArrayList<>();
-//    private static TeamRoomDataBase teamRoomDataBase;
+
     private FragmentManager fragmentManager;
-    static int i = 0;
+    private int i = -1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         ((TeamApplication) getApplication()).getRetrofitComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        toolbar.setTitle(R.string.app_name);
         fragmentManager =  getSupportFragmentManager();
         setUpView();
-//        addFragment();
-//        teamRoomDataBase = Room.databaseBuilder(this,TeamRoomDataBase.class,"features.db").allowMainThreadQueries().build();
         teamViewModel = ViewModelProviders.of(this, viewModelFactory).get(TeamViewModel.class);
         teamViewModel.getTeamResponseMutableLiveData().observe(this, new Observer<List<Team>>() {
             @Override
             public void onChanged(List<Team> teams) {
                 customAdapterInfoTeam.setData(teams);
-//                teamRoomDataBase.teamDao().addUser(reachData(teams));
                 TeamRoomDataBase.teamDao().addUser(reachData(teams));
             }
         });
@@ -77,7 +76,6 @@ public class TeamsActivity extends AppCompatActivity {
     public List<FeaturesDB> reachData(List<Team> teams) {
         List<FeaturesDB> test = teams.stream()
                 .map(team -> {
-
                             return new FeaturesDB(++i, team.getStrStadiumThumb(), team.getStrStadiumDescription());
                         }
                 ).collect(toCollection(ArrayList::new));
