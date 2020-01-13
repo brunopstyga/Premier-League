@@ -41,8 +41,6 @@ public class TeamsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Team> teams = new ArrayList<>();
-    private List<FeaturesDB> teamdb = new ArrayList<>();
-
     private FragmentManager fragmentManager;
     private int i = -1;
 
