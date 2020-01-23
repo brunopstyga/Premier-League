@@ -1,11 +1,8 @@
 package com.example.myapplicationteams.presentationview;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,18 +11,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NavUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplicationnuevo.R;
 import com.example.myapplicationteams.model.data.di.modulo.TeamApplication;
-import com.example.myapplicationteams.model.data.manager.MyListener;
-import com.example.myapplicationteams.model.data.rom.FeaturesDB;
-import com.example.myapplicationteams.model.data.rom.TeamRoomDataBase;
+import com.example.myapplicationteams.model.data.room.FeaturesDB;
+import com.example.myapplicationteams.model.data.room.TeamRoomDataBase;
 
 import java.util.ArrayList;
 import java.util.List;

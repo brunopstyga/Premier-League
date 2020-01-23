@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,8 +16,8 @@ import com.example.myapplicationteams.businessviewmodel.TeamViewModel;
 import com.example.myapplicationteams.model.data.entity.Team;
 import com.example.myapplicationteams.model.data.di.modulo.TeamApplication;
 import com.example.myapplicationteams.model.data.di.modulo.factory.ViewModelFactory;
-import com.example.myapplicationteams.model.data.rom.FeaturesDB;
-import com.example.myapplicationteams.model.data.rom.TeamRoomDataBase;
+import com.example.myapplicationteams.model.data.room.FeaturesDB;
+import com.example.myapplicationteams.model.data.room.TeamRoomDataBase;
 
 import java.util.ArrayList;
 import java.util.List;

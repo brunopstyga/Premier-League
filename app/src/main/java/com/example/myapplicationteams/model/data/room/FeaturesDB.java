@@ -1,8 +1,7 @@
-package com.example.myapplicationteams.model.data.rom;
+package com.example.myapplicationteams.model.data.room;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;

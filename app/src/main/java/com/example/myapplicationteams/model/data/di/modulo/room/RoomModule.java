@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.room.Room;
 
-import com.example.myapplicationteams.model.data.rom.TeamRoomDataBase;
+import com.example.myapplicationteams.model.data.room.TeamRoomDataBase;
 
 import javax.inject.Singleton;
 

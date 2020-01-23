@@ -1,12 +1,10 @@
 package com.example.myapplicationteams.presentationview;
 
 import com.example.myapplicationteams.model.data.entity.Team;
-import com.example.myapplicationteams.model.data.rom.FeaturesDB;
+import com.example.myapplicationteams.model.data.room.FeaturesDB;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;

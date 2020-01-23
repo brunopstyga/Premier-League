@@ -1,7 +1,6 @@
-package com.example.myapplicationteams.model.data.rom;
+package com.example.myapplicationteams.model.data.room;
 
 import java.util.Collection;
-import java.util.List;
 
 @SuppressWarnings("unchecked")
 abstract public class DaoTeam implements TeamDao {

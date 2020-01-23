@@ -1,7 +1,7 @@
 package com.example.myapplicationteams.model.data.di.modulo.room;
 
-import com.example.myapplicationteams.model.data.rom.FeaturesDB;
-import com.example.myapplicationteams.model.data.rom.TeamDao;
+import com.example.myapplicationteams.model.data.room.FeaturesDB;
+import com.example.myapplicationteams.model.data.room.TeamDao;
 
 import java.util.Collection;
 import java.util.List;
