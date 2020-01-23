@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApplicationNuevo</string>
+    <string name="app_name">PremierLeague</string>
     <string name="locationstadium">Location</string>
     <string name="name">Name</string>
     <string name="dateBirth">Date</string>
