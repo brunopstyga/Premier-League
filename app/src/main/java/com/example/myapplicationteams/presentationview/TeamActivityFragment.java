@@ -63,9 +63,6 @@ public class TeamActivityFragment extends Fragment{
                     getActivity().getSupportFragmentManager().popBackStack();
                 }
             });
-
-
-
         }catch (Exception e){
          e.printStackTrace();
         }
@@ -97,6 +94,4 @@ public class TeamActivityFragment extends Fragment{
         ((TeamApplication) getActivity().getApplication()).getRetrofitComponent().inject(this);
         super.onAttach(context);
     }
-
-
 }

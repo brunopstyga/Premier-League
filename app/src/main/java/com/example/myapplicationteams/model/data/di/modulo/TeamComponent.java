@@ -21,10 +21,4 @@ public interface TeamComponent {
     void inject (TeamsActivity teamsActivity);
 
     void inject (TeamActivityFragment teamActivityFragment);
-
-//    Application application();
-//
-//    TeamDao getDao();
-//
-//    TeamRoomDataBase getTeamRoomDataBase();
 }
