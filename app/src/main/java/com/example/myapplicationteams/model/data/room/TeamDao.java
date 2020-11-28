@@ -1,4 +1,4 @@
-package com.example.myapplicationteams.model.data.rom;
+package com.example.myapplicationteams.model.data.room;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -14,11 +14,11 @@ public interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[]addUser(Collection<FeaturesDB> team);
 
-//    @Query("SELECT * FROM teamsdb WHERE team_id = :userId")
-//    List<TeamDao> getUser(String userId);
+    @Query("SELECT * FROM teamsdb WHERE team_id = :id")
+    FeaturesDB getCharactTeamsId(int id);
 
     @Query("SELECT * FROM teamsdb")
-    List<FeaturesDB> getUser();
+    List<FeaturesDB>getListCharactTeams();
 
 //    @Query("DELETE FROM users WHERE user_name = :userId")
 //    void deleteCheckTypes(int userId);

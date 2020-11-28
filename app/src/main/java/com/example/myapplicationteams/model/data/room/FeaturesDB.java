@@ -1,4 +1,4 @@
-package com.example.myapplicationteams.model.data.rom;
+package com.example.myapplicationteams.model.data.room;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

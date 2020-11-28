@@ -2,6 +2,7 @@ package com.example.myapplicationteams.presentationview;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,6 @@ import java.util.List;
 
 import com.example.myapplicationteams.model.data.MessageEvent;
 import com.example.myapplicationteams.model.data.entity.Team;
-import com.example.myapplicationteams.model.data.manager.MyListener;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -27,7 +27,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInfoTeam.CustomViewHolder> implements MyListener {
+public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInfoTeam.CustomViewHolder> {
 
     private List<Team> dataList;
     private Context context;
@@ -41,23 +41,10 @@ public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInf
         this.fragmentManager = fragmentManager;
     }
 
-    @Override
-    public void addTwoNumbers(int a) {
-
-    }
-
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
 
-//        TextView locationstadium;
-
-
-//        TextView name;
-//        TextView website;
-//        TextView Date;
-//        TextView namestadium;
-//        TextView stadiumcapacity;
         @BindView(R.id.textNamebutton)
         TextView name;
         @BindView(R.id.text_locationstadium)
@@ -75,14 +62,6 @@ public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInf
             super(itemView);
             mView = itemView;
             ButterKnife.bind(this, itemView);
-//            name  = mView.findViewById(R.id.textNamebutton);
-//            locationstadium = mView.findViewById(R.id.text_locationstadium);
-//            website = mView.findViewById(R.id.text_website);
-//            Date = mView.findViewById(R.id.tex_datebirth);
-//            namestadium = mView.findViewById(R.id.text_namestadium);
-//            stadiumcapacity = mView.findViewById(R.id.tex_stadiumcapacity);
-
-
         }
     }
 
@@ -103,7 +82,6 @@ public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInf
         try {
             holder.locationstadium.setText(dataList.get(position).getStadiumLocation());
             holder.name.setText(dataList.get(position).getNameTeam());
-
             holder.name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -112,12 +90,11 @@ public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInf
                         Bundle bundle = new Bundle();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         transaction.replace(R.id.fragment_main, featureFragment, "TeamFragment");
+                        transaction.addToBackStack("TeamFragment");
                         int position =  holder.getAdapterPosition();
                         bundle.putInt(Util.FROMADAPTERTEAM,position);
                         featureFragment.setArguments(bundle);
                         transaction.commit();
-//                    Intent numbersIntent = new Intent(context, FeatureFragment.class);
-//                    context.startActivity(numbersIntent);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -126,6 +103,7 @@ public class CustomAdapterInfoTeam extends RecyclerView.Adapter<CustomAdapterInf
             holder.Date.setText(String.valueOf(dataList.get(position).getDateBirth()));
             holder.namestadium.setText(dataList.get(position).getNameStadium());
             holder.website.setText(dataList.get(position).getStrWebsite());
+            Linkify.addLinks( holder.website, Linkify.WEB_URLS);
             holder.stadiumcapacity.setText(String.valueOf(dataList.get(position).getStadiumCapacity()));
 
         } catch (Exception e) {

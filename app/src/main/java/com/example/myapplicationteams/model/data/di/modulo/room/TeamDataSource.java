@@ -1,9 +1,7 @@
 package com.example.myapplicationteams.model.data.di.modulo.room;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.myapplicationteams.model.data.rom.FeaturesDB;
-import com.example.myapplicationteams.model.data.rom.TeamDao;
+import com.example.myapplicationteams.model.data.room.FeaturesDB;
+import com.example.myapplicationteams.model.data.room.TeamDao;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +17,7 @@ public class TeamDataSource implements RoomRepository {
 
     @Override
     public List<FeaturesDB> findAll() {
-        return teamDao.getUser();
+        return teamDao.getListCharactTeams();
     }
 
     @Override
