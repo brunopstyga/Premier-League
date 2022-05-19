@@ -34,8 +34,13 @@ public class TeamViewModel extends BaseViewModel {
         call.enqueue(new Callback<TeamResponse>() {
             @Override
             public void onResponse(Call<TeamResponse> call, Response<TeamResponse> response) {
-                Log.d("TGI", "ERROR:" + response.message());
-                data.setValue(response.body().getData());
+
+                if (response.isSuccessful()){
+                    data.setValue(response.body().getData());
+                }else{
+                    Log.d("TGI", "ERROR:" + response.message());
+                }
+
             }
 
             @Override
